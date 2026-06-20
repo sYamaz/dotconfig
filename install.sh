@@ -10,6 +10,11 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 XDG="${XDG_CONFIG_HOME:-$HOME/.config}"
 BACKUP="$HOME/.dotconfig-backup/$(date +%Y%m%d-%H%M%S)"
 
+# pre-commit などの git hook(.githooks/)を有効化する。
+# これで commit 時に gitleaks が走り、secret/PII の混入をブロックする。
+git -C "$REPO_DIR" config core.hooksPath .githooks
+echo "hooks core.hooksPath -> .githooks"
+
 # link <src> <dst>: src(repo 内)へ向かう symlink を dst に作る。
 link() {
   local src="$1" dst="$2"

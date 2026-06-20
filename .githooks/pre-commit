@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# pre-commit: staged 差分を gitleaks で検査し、secret/PII を含む commit をブロックする。
+#
+set -euo pipefail
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "warning: gitleaks 未インストールのため secret 検査をスキップします (brew install gitleaks 推奨)" >&2
+  exit 0
+fi
+
+root="$(git rev-parse --show-toplevel)"
+gitleaks git --staged --redact --no-banner -c "$root/.gitleaks.toml" "$root"

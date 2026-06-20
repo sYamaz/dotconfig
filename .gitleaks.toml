@@ -1,0 +1,28 @@
+title = "dotconfig gitleaks config"
+
+# gitleaks 標準の secret 検出ルールを継承する
+[extend]
+useDefault = true
+
+# --- 個人情報(PII)検出ルール ---
+
+[[rules]]
+id = "personal-email"
+description = "Personal email address"
+regex = '''syunn820@gmail\.com'''
+tags = ["pii"]
+
+[[rules]]
+id = "personal-username-path"
+description = "Hardcoded home path / username"
+regex = '''(/Users/shunyamazaki|shunyamazaki)'''
+tags = ["pii"]
+
+# --- 誤検知の除外 ---
+[allowlist]
+description = "False positives"
+paths = [
+  '''config/nvim/lazy-lock\.json''',  # プラグインの commit hash 群
+  '''config/nvim/LICENSE''',
+  '''\.gitleaks\.toml''',             # このファイル自身(PII 正規表現を含む)
+]

@@ -11,6 +11,29 @@ config/zsh/.zsh_history
 # Claude Code のローカル設定
 **/.claude/settings.local.json
 
+# 秘密鍵・証明書(誤コミット防止の広域ブロック)
+*.pem
+*.key
+*.p12
+*.pfx
+*.gpg
+*.asc
+id_rsa*
+id_ed25519*
+
+# 認証情報・環境変数
+.env
+.env.*
+*.env
+.netrc
+.npmrc
+**/credentials
+**/*credentials*
+**/*token*
+
+# 履歴
+**/*history
+
 # nvim 生成物(config/nvim/.gitignore でも別途カバー)
 config/nvim/.tests
 config/nvim/data

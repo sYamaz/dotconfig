@@ -43,3 +43,11 @@ install.sh     symlink を張る
 ## tmux プラグイン
 
 `tmux/plugins/` は管理しない。tpm をインストール後、prefix + I でプラグインを入れる。
+
+## secret scanning
+
+public repo のため、secret / 個人情報の混入を多層で防ぐ:
+
+- **pre-commit**: `./install.sh` が `core.hooksPath=.githooks` を設定。commit 時に [gitleaks](https://github.com/gitleaks/gitleaks) が staged 差分を検査(`brew install gitleaks` が必要)。
+- **CI**: `.github/workflows/gitleaks.yml` が push/PR 時に検査。
+- 検出ルールは `.gitleaks.toml`(gitleaks 標準ルール + メール等の個人情報)。誤検知は同ファイルの `allowlist` で除外。
