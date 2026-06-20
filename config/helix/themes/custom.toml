@@ -1,3 +1,0 @@
-inherits = "noctice"
-
-"ui.background" = {fg = "foreground"}

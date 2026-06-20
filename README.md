@@ -6,7 +6,6 @@
 
 - tmux
 - lazyvim (Neovim)
-- helix
 - fzf
 - eza (not exa)
 - font: PlemolJP console nf
@@ -27,7 +26,7 @@
 
 ```
 config/        各ディレクトリが ~/.config/<tool> に対応
-  nvim/ tmux/ zsh/ git/ gh/ helix/ lazygit/ mise/ ghostty/
+  nvim/ tmux/ zsh/ git/ gh/ lazygit/ mise/ ghostty/
 home/.zshenv   -> ~/.zshenv (XDG_CONFIG_HOME と ZDOTDIR を定義)
 install.sh     symlink を張る
 ```
