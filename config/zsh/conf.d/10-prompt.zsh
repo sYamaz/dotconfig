@@ -11,8 +11,11 @@ zstyle ':vcs_info:git:*' formats       '%b%u%c'
 zstyle ':vcs_info:git:*' actionformats '%b|%a%u%c'
 
 # powerline グリフ（Nerd Font, private-use area）
-typeset -g _PLC_LSEG=$'' _PLC_RSEG=$''
-typeset -g _PLC_LSUB=$'' _PLC_BR=$''
+# 生バイトだとエディタ/encoding で落ちやすいため $'\uXXXX'（ASCII 表記）で定義する。
+#   E0B0 右向き塗り三角（左セグメントの尖ったキャップ） / E0B2 左向き塗り三角（対称用）
+#   E0B1 細い右向き区切り（dir と git の間） / E0A0 git ブランチアイコン
+typeset -g _PLC_LSEG=$'\ue0b0' _PLC_RSEG=$'\ue0b2'
+typeset -g _PLC_LSUB=$'\ue0b1' _PLC_BR=$'\ue0a0'
 
 # --- 実行時間計測 ---
 _plc_preexec() { _plc_start=$EPOCHREALTIME }
