@@ -1,0 +1,20 @@
+# theme = noctice
+
+# background = 1F1F1F
+background = #031219
+background-opacity = 0.85
+background-blur = macos-glass-regular
+font-size = 13
+macos-titlebar-style = "transparent"
+
+desktop-notifications = true
+window-save-state = "always"
+
+# window-padding-x = 16,16
+window-padding-y = 8
+tab-inherit-working-directory = false
+
+notify-on-command-finish-action = bell,notify
+notify-on-command-finish = unfocused
+
+font-family = "PlemolJP Console NF"

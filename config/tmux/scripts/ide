@@ -1,0 +1,9 @@
+#!/bin/bash
+# 現在のウィンドウを開発用の定型ペインレイアウトに一発展開する。
+# 右に細い縦ペイン(20%)、左側を上下に分けてさらに下段を3分割する。
+# パーセンテージは好みで調整可。
+tmux split-window -h -l 20%
+tmux select-pane -L
+tmux split-window -v -l 30%
+tmux split-window -h -l 66%
+tmux split-window -h -l 50%

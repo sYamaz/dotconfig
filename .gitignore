@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# tpm が clone するプラグイン群(tpm で別途インストール)
+config/tmux/plugins/
+
+# 秘密情報・状態
+config/gh/hosts.yml
+config/zsh/.zsh_history
+
+# Claude Code のローカル設定
+**/.claude/settings.local.json
+
+# nvim 生成物(config/nvim/.gitignore でも別途カバー)
+config/nvim/.tests
+config/nvim/data
+config/nvim/*.log
+config/nvim/debug
+config/nvim/.repro

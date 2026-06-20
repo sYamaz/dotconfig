@@ -1,0 +1,30 @@
+theme = "custom"
+# theme = "solarized_dark"
+editor.soft-wrap.enable = true
+# terminfo(tmux-256color)が Smulx を広告しないため undercurl 自動検出が効かない。
+# tmux→ghostty 経路は対応済みなので、強制的に undercurl を送出させる。
+editor.undercurl = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "hint"
+
+[keys.normal]
+# lazygit
+C-g = [
+    ":write-all", 
+    ":new", 
+    ":insert-output lazygit", 
+    ":buffer-close!", 
+    ":redraw", 
+    ":reload-all"
+]
+
+# yazi
+C-y = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file',
+  ':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
