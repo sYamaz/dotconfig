@@ -55,5 +55,20 @@ fi
 # home/.zshenv -> ~/.zshenv
 link "$REPO_DIR/home/.zshenv" "$HOME/.zshenv"
 
+# tpm(tmux plugin manager)をブートストラップする。
+# plugins/ は .gitignore で除外しており clone には含まれないため、
+# 未取得なら tpm を clone する。これで tmux 内の `prefix + I` が使える。
+# 取得済みならスキップ(べき等)。
+TPM_DIR="$XDG/tmux/plugins/tpm"
+if [ -d "$TPM_DIR/.git" ]; then
+  echo "ok    $TPM_DIR"
+elif command -v git >/dev/null 2>&1; then
+  git clone --depth 1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
+  echo "clone $TPM_DIR"
+  echo "  -> tmux 起動後 'prefix + I' でプラグインをインストールしてください"
+else
+  echo "warn  git が見つからず tpm を clone できません: $TPM_DIR"
+fi
+
 echo
 echo "done. backups (if any) under: $BACKUP"
