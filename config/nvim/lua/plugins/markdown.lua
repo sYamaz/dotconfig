@@ -24,4 +24,12 @@ return {
       },
     },
   },
+  -- MarkdownPreview の最大幅 900px を撤廃するカスタム CSS を適用
+  {
+    "iamcco/markdown-preview.nvim",
+    optional = true,
+    init = function()
+      vim.g.mkdp_markdown_css = vim.fn.stdpath("config") .. "/markdown-preview.css"
+    end,
+  },
 }
