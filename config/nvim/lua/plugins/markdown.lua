@@ -1,5 +1,10 @@
 local config = vim.fn.stdpath("config") .. "/markdownlint.yaml"
 return {
+  -- markdown コードブロック内の mermaid をシンタックスハイライト
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "mermaid" } },
+  },
   -- 診断(リンター)に --config を渡す
   {
     "mfussenegger/nvim-lint",
