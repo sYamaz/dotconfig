@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## プロジェクト概要
+
+dotfiles / config repo。主な対象言語は Shell・YAML・Markdown。設定は `~/.config` 配下に置かれ、変更は PR 経由で管理し、複数デバイス間で同期される。
+
 ## 目的
 
 `~/.config` 配下の各ツール設定と `~/.zshenv` を symlink で管理する dotfiles repo。**macOS 専用。**
@@ -33,3 +37,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `home/.zshenv` が `XDG_CONFIG_HOME=$HOME/.config` と `ZDOTDIR=$HOME/.config/zsh` を定義する。zsh 設定の本体は `config/zsh/`。
 - tmux プラグインは tpm 管理。`config/tmux/plugins/` は除外しており、版管理しない。
+
+## Git 操作
+
+git 操作(commit・push・PR 作成)の後は必ず `git log` / `git status` / `git branch --show-current` を実行して検証する。実際のコマンド出力で確認できるまで成功と報告しない。
+
+## 主張前の検証
+
+設定や機能が既に存在する/欠けていると主張する前に、まず実ファイルを読むか検証コマンドを実行する。慣例から推測で判断しない。
+
+## デバッグ
+
+設定の問題(tmux・helix・zsh・terminfo など)を診断する際は、修正を当てる前に根本原因が再現することを確認する。`~/.terminfo` のようなシステムファイルにパッチを当てるより、ドキュメント化されたアプリレベルの設定を優先する。
